@@ -1,9 +1,14 @@
-import fs from 'node:fs/promises';
+//import fs from 'node:fs/promises';
+const fs = require('fs');
+const bodyParser = require('body-parser');
+const express = require('express');
 
-import bodyParser from 'body-parser';
-import express from 'express';
+// const eventRoutes = require('./routes/events');
+// const authRoutes = require('./routes/auth');
 
 const app = express();
+
+app.use(bodyParser.json());
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
@@ -170,6 +175,6 @@ app.delete('/events/:id', async (req, res) => {
   }, 1000);
 });
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
+app.listen(8081, () => {
+  console.log('Server running on port 8081');
 });
